@@ -1,6 +1,6 @@
 # Проєкти КАІ
 
-_Виконані на C++/GCC 14.2.1, C#/.NET Core 7.0.203 (C#/.NET Framework 7.0.401), Java/OpenJDK 21.0.5, Python/CPython 3.13.1, MATLAB R2015b._ 
+_Виконані на C++/GCC 14.2.1, C#/.NET Core 7.0.203 (C#/.NET Framework 7.0.401), Java/OpenJDK 21.0.6, Python/CPython 3.13.1, MATLAB R2015b._ 
 _Для C++ використовується CMake._
 
 Тут знаходяться всі виконані в КАІ/НАУ (2023–2025) лабораторні роботи Михайла Стецюка з дисциплін:

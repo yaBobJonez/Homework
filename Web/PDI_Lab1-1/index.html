@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота 1.1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <h1>Структурований текст</h1>
+        <p id="first-p">
+            There was a stirring in the shadows, and from all around lithe dark shapes crept stealthily over
+            the rocks. Unsheathed claws glinted in the moonlight. Wary eyes flashed like amber. And then, as
+            if on a silent signal, the creatures leaped at each other, and suddenly the rocks were alive with
+            wrestling, screeching cats.
+        </p>
+        <p id="second-p">
+            Pascow stopped near SMUCKY THE CAT HE WAS OBEDIANT and turned back toward Louis. The horror, the
+            terror; he felt these things would grow in him until his body blew apart under their soft yet
+            implacable pressure. Pascow was grinning. His bloody lips were wrinkled back from his teeth and
+            his healthy road-crew tan in the moon’s bony light had become overlaid with the white of a corpse
+            about to be sewn into its winding shroud.
+        </p>
+        <p id="third-p">
+            Зазвичай, вбудовані системи є складовою частиною пристрою, включаючи апаратне забезпечення та
+            механічні елементи. На противагу вбудованим, загальні комп'ютерні системи (такі як персональний
+            комп'ютер) призначені для виконання широкого кола завдань. Вбудовані системи присутні у багатьох
+            сучасних приладах.
+        </p>
+    </section>
+    <section>
+        <h2>Невпорядкований список: 5 грецьких літер</h2>
+        <ul>
+            <li>Епсилон (Εε)</li>
+            <li>Лямбда (Λλ)</li>
+            <li>Тау (Ττ)</li>
+            <li>Тета (Θθ)</li>
+            <li>Омега (Ωω)</li>
+        </ul>
+        <h2 id="ordered-list">Впорядкований список: як створити просту вебсторінку</h2>
+        <ol>
+            <li>Створіть новий файл HTML</li>
+            <li>Відкрийте у текстовому редакторі, редакторі коду або IDE</li>
+            <li>Додайте декларацію HTML5 — <code>&lt;!DOCTYPE html&gt;</code></li>
+            <li>Додайте тег <code>&lt;html&gt;</code></li>
+            <li>Всередині нього додайте <code>&lt;head&gt;&lt;title&gt; та введіть заголовок</code></li>
+            <li>Напишіть ваш вміст сторінки у <code>&lt;body&gt;</code></li>
+        </ol>
+        <h2>Список визначень: терміни з теорії управління</h2>
+        <dl>
+            <dt>Алгоритм керування</dt>
+            <dd>
+                — це сукупність настанов, що визначають характер впливів на ОК з метою забезпечення його
+                алгоритму функціонування.
+            </dd>
+            <dt>Принцип компенсації збурень</dt>
+            <dd>
+                — це принцип, за якого керівний вплив у системі виробляється залежно від результатів
+                вимірювання збурення, що діє на об'єкт.
+            </dd>
+            <dt>ПІД контролер</dt>
+            <dd>
+                — це контур керування із механізмом зворотного зв'язку.
+            </dd>
+        </dl>
+        <h2>Візуальне представлення дворівневого списку</h2>
+        <ol type="I">
+            <li>
+                Перший рівень — великі римські,
+                <ol type="i">
+                    <li>
+                        другий рівень — маленькі римські,
+                        <ol type="a">
+                            <li>а третій — маленькі літери.</li>
+                            <li>Ще один елемент</li>
+                        </ol>
+                    </li>
+                    <li>Виконав Стецюк</li>
+                </ol>
+            </li>
+            <li>Іще один для демонстрації</li>
+        </ol>
+        <h2>Посилання</h2>
+        <a href="index.html" target="_blank">До лабораторної №1 (цієї)</a>
+        <a href="#ordered-list">До впорядкованого списку</a>
+    </section>
+    <section>
+        <h2>Таблиця: 3×3</h2>
+        <table>
+            <caption>Дані клієнтів</caption>
+            <thead>
+            <tr>
+                <th>Імʼя</th>
+                <th>Прізвище</th>
+                <th>Телефон</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Андрій</td>
+                <td colspan="2">невідомо</td>
+            </tr>
+            <tr>
+                <td>Оля</td>
+                <td>Колобок</td>
+                <td>0681112233</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <h2 id="map" style="text-align: center;">Мапа університету</h2>
+        <img src="kai_map.jpeg" usemap="#kai-map" alt="Мапа КАІ">
+        <map name="kai-map">
+            <area alt="Перший корпус" title="Перший корпус" href="kai.html#building-1" coords="319,914,892,693" shape="rect">
+            <area alt="Сьомий корпус" title="Сьомий корпус" href="kai.html#building-7" coords="446,130,600,19" shape="rect">
+            <area alt="Третій корпус" title="Третій корпус" href="kai.html#building-3" coords="267,350,413,174" shape="rect">
+            <area alt="Одинадцятий корпус" title="Одинадцятий корпус" href="kai.html#building-11" coords="462,563,726,413" shape="rect">
+            <area alt="Восьмий корпус" title="Восьмий корпус" href="kai.html#building-8" coords="1075,904,1188,420" shape="rect">
+            <area alt="Четвертий корпус" title="Четвертий корпус" href="kai.html#building-4" coords="165,433,263,231" shape="rect">
+            <area alt="Центр культури і мистецтв" title="Центр культури і мистецтв" href="kai.html#ckm" coords="954,665,1072,507" shape="rect">
+        </map>
+        <script src="resize-map.js"></script>
+    </section>
+</body>
+</html>
