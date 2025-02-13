@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>XPath - корисні запити</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+        body { background-color: wheat; }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        main {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            height: 92vh;
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+        label, button, textarea {
+            margin: 8px;
+        }
+        textarea {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Інтерактивні приклади виразів XPath</h1>
+    <main>
+        <div>
+            <label>Натисніть вираз XPath для виконання:</label>
+            <button onclick="execXPath(this)">/customs/declaration/baggage</button>
+            <button onclick="execXPath(this)">//declaration[@id = "67890"]</button>
+            <button onclick="execXPath(this)">//declaration[money > 500 and money/@currency = "UAH"]</button>
+            <button onclick="execXPath(this)">//origin[../destination = "Україна"]</button>
+            <button onclick="execXPath(this)">//item[name = "Чай чорний"]/following-sibling::item</button>
+            <button onclick="execXPath(this)">//item[amount/@unit = "шт"]/taxes/tax[text() < 150]</button>
+        </div>
+        <div>
+            <label for="resultField">Результат пошуку у вигляді рядка:</label>
+            <textarea id="resultField" readonly></textarea>
+        </div>
+    </main>
+    <script>
+        function execXPath(button) {
+            fetch("../Частина-1/data.xml")
+                .then(response => response.text())
+                .then(xmlString => {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+                    const xPathResult = xmlDoc.evaluate(button.innerText, xmlDoc);
+                    let result = "", next;
+                    while (next = xPathResult.iterateNext())
+                        result += next.outerHTML + '\n';
+                    document.querySelector("#resultField").value = result;
+                });
+        }
+    </script>
+</body>
+</html>

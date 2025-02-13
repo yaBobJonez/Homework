@@ -1,0 +1,33 @@
+<!ELEMENT customs (declaration*)>
+
+<!ELEMENT declaration (firstname, lastname, patronym?, origin, destination, money, baggage)>
+<!ATTLIST declaration id CDATA #IMPLIED>
+
+<!ELEMENT firstname (#PCDATA)>
+<!ELEMENT lastname (#PCDATA)>
+<!ELEMENT patronym (#PCDATA)>
+
+<!ELEMENT origin (#PCDATA)>
+<!ELEMENT destination (#PCDATA)>
+
+<!ELEMENT money (#PCDATA)>
+<!ATTLIST money currency CDATA #IMPLIED>
+
+<!ELEMENT baggage (item*)>
+
+<!ELEMENT item (name, amount, value, taxes)>
+<!ATTLIST item id CDATA #IMPLIED>
+
+<!ELEMENT name (#PCDATA)>
+
+<!ELEMENT amount (#PCDATA)>
+<!ATTLIST amount unit CDATA #IMPLIED>
+
+<!ELEMENT value (#PCDATA)>
+<!ATTLIST value currency CDATA #IMPLIED>
+
+<!ELEMENT taxes (tax*)>
+
+<!ELEMENT tax (#PCDATA)>
+<!ATTLIST tax type CDATA #REQUIRED>
+<!ATTLIST tax rate CDATA #REQUIRED>

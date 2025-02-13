@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE customs SYSTEM "customs.dtd">
+<?xml-stylesheet type="text/css" href="style.css"?>
+<customs>
+    <declaration id="12345">
+        <firstname>Олександр</firstname>
+        <lastname>Іваненко</lastname>
+        <patronym>Петрович</patronym>
+        <origin>Україна</origin>
+        <destination>Польща</destination>
+        <money currency="UAH">15000</money>
+        <baggage>
+            <item id="54321">
+                <name>Ноутбук</name>
+                <amount unit="шт">1</amount>
+                <value currency="USD">800</value>
+                <taxes>
+                    <tax type="мито" rate="10">80</tax>
+                    <tax type="ПДВ" rate="20">160</tax>
+                </taxes>
+            </item>
+        </baggage>
+    </declaration>
+    <declaration id="67890">
+        <firstname>Марія</firstname>
+        <lastname>Шевченко</lastname>
+        <origin>Польща</origin>
+        <destination>Україна</destination>
+        <money currency="EUR">500</money>
+        <baggage>
+            <item id="98765">
+                <name>Чай чорний</name>
+                <amount unit="кг">2</amount>
+                <value currency="EUR">30</value>
+                <taxes>
+                    <tax type="мито" rate="5">1.5</tax>
+                </taxes>
+            </item>
+            <item id="98765">
+                <name>Чай зелений</name>
+                <amount unit="кг">3</amount>
+                <value currency="EUR">50</value>
+                <taxes>
+                    <tax type="мито" rate="5">2.5</tax>
+                </taxes>
+            </item>
+        </baggage>
+    </declaration>
+    <declaration id="13579">
+        <firstname>Ігор</firstname>
+        <lastname>Ковальчук</lastname>
+        <patronym>Олександрович</patronym>
+        <origin>Словаччина</origin>
+        <destination>Україна</destination>
+        <money currency="PLN">1200</money>
+        <baggage>
+            <item id="86420">
+                <name>Телевізор</name>
+                <amount unit="шт">1</amount>
+                <value currency="USD">500</value>
+                <taxes>
+                    <tax type="ПДВ" rate="20">100</tax>
+                </taxes>
+            </item>
+        </baggage>
+    </declaration>
+    <declaration id="24680">
+        <firstname>Наталія</firstname>
+        <lastname>Зайцева</lastname>
+        <patronym>Іванівна</patronym>
+        <origin>Угорщина</origin>
+        <destination>Румунія</destination>
+        <money currency="USD">300</money>
+        <baggage>
+        </baggage>
+    </declaration>
+    <declaration id="11223">
+        <firstname>Василь</firstname>
+        <lastname>Петренко</lastname>
+        <origin>Молдова</origin>
+        <destination>Україна</destination>
+        <money currency="UAH">20000</money>
+        <baggage>
+            <item id="55443">
+                <name>Цукор</name>
+                <amount unit="кг">10</amount>
+                <value currency="UAH">500</value>
+                <taxes>
+                </taxes>
+            </item>
+        </baggage>
+    </declaration>
+</customs>

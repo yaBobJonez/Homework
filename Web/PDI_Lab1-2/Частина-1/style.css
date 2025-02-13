@@ -1,0 +1,63 @@
+declaration:before {
+    display: block;
+    content: 'Декларація №' attr(id);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+declaration {
+    display: block;
+    border: 2px solid gray;
+    background: wheat;
+    padding: 8px;
+}
+
+firstname:before {
+    content: 'ПІБ: ';
+    font-weight: bold;
+}
+
+origin { white-space:pre; }
+origin:before {
+    content: '\AМаршрут: ';
+    font-weight: bold;
+}
+origin:after {
+    content: ' — ';
+}
+
+money { white-space:pre; }
+money:before {
+    content: '\AНаявні гроші: ';
+    font-weight: bold;
+}
+money:after {
+    content: ' ' attr(currency)
+}
+
+baggage:before {
+    display: block;
+    content: 'Багаж:';
+    font-weight: bold;
+}
+
+item {
+    display: list-item;
+    list-style: square outside;
+    padding-left: 10px;
+    margin-left: 20px;
+}
+
+item > name:after {
+    content: ': '
+}
+item > amount:after {
+    content: ' ' attr(unit) ', '
+}
+item > value:after {
+    content: ' ' attr(currency)
+}
+
+tax { white-space:pre; }
+tax:before {
+    content: '\A' attr(type) ' (' attr(rate) '%): ';
+}
