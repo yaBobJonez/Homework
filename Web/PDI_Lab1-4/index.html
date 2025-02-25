@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна 1.4</title>
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/form.css">
+    <link rel="stylesheet" href="styles/table.css">
+</head>
+<body>
+<section>
+    <h2>Форма митної декларації</h2>
+    <form name="declaration-form" action="javascript:add_declaration()" method="post">
+        <fieldset>
+            <legend>Відомості про особу</legend>
+            <label for="first-name">
+                Імʼя:
+                <input type="text" id="first-name" name="first-name" required>
+            </label>
+            <label for="last-name">
+                Прізвище:
+                <input type="text" id="last-name" name="last-name" required>
+            </label>
+            <label for="patronym">
+                По батькові:
+                <input type="text" id="patronym" name="patronym">
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Дані про візит</legend>
+            <label for="native-language">
+                Рідна мова:
+                <input type="text" id="native-language" name="native-language" list="languages" required>
+            </label>
+            <datalist id="languages">
+                <option value="українська">
+                <option value="polski">
+                <option value="English">
+                <option value="Deutsch">
+                <option value="français">
+                <option value="italiano">
+                <option value="español">
+                <option value="Português">
+            </datalist>
+            <label for="purpose-of-visit">
+                Мета візиту:
+                <input type="text" id="purpose-of-visit" name="purpose-of-visit" required>
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Особисті речі</legend>
+            <label for="money">
+                Наявні гроші:
+                <input type="number" id="money" name="money" required>
+            </label>
+            <label for="currency">
+                <select id="currency" name="currency" required>
+                    <option value="UAH">₴</option>
+                    <option value="PLN">Zł</option>
+                    <option value="USD">US$</option>
+                    <option value="EUR">€</option>
+                    <option value="GBP">₤</option>
+                    <option value="TRY">₺</option>
+                </select>
+            </label>
+            <br>
+            <label for="baggage-list">
+                Багаж:
+                <textarea id="baggage-list" name="baggage-list"
+                          placeholder="Ноутбук, 1 шт: 24000 UAH&#13;Кава, 2 кг: 50.25 USD"
+                          rows="8" cols="70"></textarea>
+            </label>
+        </fieldset>
+        <input type="submit" value="Подати декларацію">
+    </form>
+</section>
+<hr>
+<section>
+    <h2>Митні декларації</h2>
+    <div class="buttons-container">
+        <button onclick="export_to_JSON()">Експортувати у JSON</button>
+        <button onclick="export_to_XML()">Експортувати в XML</button>
+        <button onclick="clear_records()">Очистити все</button>
+    </div>
+    <table id="declarations-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>ПІБ</th>
+            <th>Рідна мова</th>
+            <th>Мета візиту</th>
+            <th>Гроші</th>
+            <th>Багаж</th>
+            <th>Дії</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</section>
+<script src="processing.js"></script>
+</body>
+</html>
