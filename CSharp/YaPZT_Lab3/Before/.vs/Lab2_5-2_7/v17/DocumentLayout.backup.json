@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Home\\YaPZT_Lab3\\Before\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{01A43D1C-B764-4F77-8C82-D5654A7735D7}|Lab2_5-2_7\\Lab2_5-2_7.csproj|c:\\home\\yapzt_lab3\\before\\lab2_5-2_7\\triangle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01A43D1C-B764-4F77-8C82-D5654A7735D7}|Lab2_5-2_7\\Lab2_5-2_7.csproj|solutionrelative:lab2_5-2_7\\triangle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Triangle.cs",
+              "DocumentMoniker": "C:\\Home\\YaPZT_Lab3\\Before\\Lab2_5-2_7\\Triangle.cs",
+              "RelativeDocumentMoniker": "Lab2_5-2_7\\Triangle.cs",
+              "ToolTip": "C:\\Home\\YaPZT_Lab3\\Before\\Lab2_5-2_7\\Triangle.cs",
+              "RelativeToolTip": "Lab2_5-2_7\\Triangle.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T21:19:13.544Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
