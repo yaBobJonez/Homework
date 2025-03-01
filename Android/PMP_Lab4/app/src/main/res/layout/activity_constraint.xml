@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConstraintActivity">
+
+  <WebView
+      android:id="@+id/webview"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toTopOf="@id/search_edit"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <Button
+      android:id="@+id/back_btn"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:padding="0dp"
+      android:text="&lt;"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <Button
+      android:id="@+id/refresh_btn"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:padding="0dp"
+      android:text="↻"
+      app:layout_constraintLeft_toRightOf="@id/back_btn"
+      app:layout_constraintBottom_toBottomOf="@id/back_btn"/>
+
+  <Button
+      android:id="@+id/forward_btn"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:padding="0dp"
+      android:text="&gt;"
+      app:layout_constraintLeft_toRightOf="@id/refresh_btn"
+      app:layout_constraintBottom_toBottomOf="@id/refresh_btn"/>
+
+  <EditText
+      android:id="@+id/search_edit"
+      android:layout_width="0dp"
+      android:layout_height="50dp"
+      app:layout_constraintLeft_toRightOf="@id/forward_btn"
+      app:layout_constraintRight_toLeftOf="@id/search_btn"
+      app:layout_constraintBottom_toBottomOf="@id/forward_btn"
+      android:singleLine="true"
+      android:text="https://google.com/" />
+
+  <Button
+      android:id="@+id/search_btn"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:padding="0dp"
+      android:text="Go"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintBottom_toBottomOf="@id/search_edit" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RelativeActivity">
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/search_edit" />
+
+    <Button
+        android:id="@+id/back_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="0dp"
+        android:layout_alignBottom="@id/search_edit"
+        android:text="&lt;" />
+
+    <Button
+        android:id="@+id/refresh_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="0dp"
+        android:layout_toEndOf="@id/back_btn"
+        android:layout_alignBottom="@id/search_edit"
+        android:text="↻" />
+
+    <Button
+        android:id="@+id/forward_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="0dp"
+        android:layout_toEndOf="@id/refresh_btn"
+        android:layout_alignBottom="@id/search_edit"
+        android:text="&gt;" />
+
+    <EditText
+        android:id="@+id/search_edit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@id/search_btn"
+        android:layout_toStartOf="@id/search_btn"
+        android:layout_toEndOf="@id/forward_btn"
+        android:singleLine="true"
+        android:text="https://google.com/" />
+
+    <Button
+        android:id="@+id/search_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:text="Go" />
+</RelativeLayout>
