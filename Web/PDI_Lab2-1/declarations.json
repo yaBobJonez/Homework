@@ -1,0 +1,52 @@
+{
+  "1": {
+    "first-name": "Андрій",
+    "last-name": "Величар",
+    "patronym": "Августинович",
+    "native-language": "українська",
+    "purpose-of-visit": "Тимчасовий захист",
+    "money": "60500",
+    "currency": "UAH",
+    "baggage-list": "Ноутбук, 1 шт: 36000 UAH\r\nАвтомобіль (Chevrolet Lacetti), 1 шт: 6200 USD\r\nКовдра, 2 шт: 300 UAH"
+  },
+  "2": {
+    "first-name": "Тамара",
+    "last-name": "Шекун",
+    "patronym": "Юріївна",
+    "native-language": "українська",
+    "purpose-of-visit": "Бізнес",
+    "money": "7000",
+    "currency": "EUR",
+    "baggage-list": "Кава, 4 кг: 400 PLN"
+  },
+  "3": {
+    "first-name": "Жан-Пʼєр",
+    "last-name": "Беранже",
+    "patronym": "",
+    "native-language": "français",
+    "purpose-of-visit": "Туризм",
+    "money": "18000",
+    "currency": "EUR",
+    "baggage-list": "Камера, 1 шт: 200 EUR"
+  },
+  "6": {
+    "first-name": "Їжак",
+    "last-name": "Олександра",
+    "patronym": "Валентинівна",
+    "native-language": "українська",
+    "purpose-of-visit": "Туризм",
+    "money": "70286",
+    "currency": "UAH",
+    "baggage-list": ""
+  },
+  "7": {
+    "first-name": "Тадеуш",
+    "last-name": "Хмельовскі",
+    "patronym": "",
+    "native-language": "polski",
+    "purpose-of-visit": "Набуття громадянства",
+    "money": "12000",
+    "currency": "PLN",
+    "baggage-list": "Книжка, 8 шт: 628 PLN"
+  }
+}

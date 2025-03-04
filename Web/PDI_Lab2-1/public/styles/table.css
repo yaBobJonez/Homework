@@ -1,0 +1,38 @@
+table {
+    width: 75%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+tr:nth-child(even), th {
+    background-color: #f2f2f2;
+}
+tr:nth-child(odd) {
+    background-color: #e6e6e6;
+}
+
+.buttons-container {
+    width: fit-content;
+    margin: 0 auto;
+}
+.buttons-container button, .buttons-container a {
+    background-color: transparent;
+    padding: 6px 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    /* Зробити посилання аналогічними до кнопок */
+    text-decoration: none;
+    color: inherit;
+}
+.buttons-container button:hover, .buttons-container a:hover {
+    background-color: #f8f8f8;
+}

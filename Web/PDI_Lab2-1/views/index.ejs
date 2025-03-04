@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Перелік декларацій</title>
+    <link rel="stylesheet" href="/styles/general.css">
+    <link rel="stylesheet" href="/styles/table.css">
+    <script>
+        async function remove_declaration(id) {
+            const res = await fetch(`/database/${id}`, {
+                method: 'DELETE'
+            });
+            if (!res.ok) return;
+            document.querySelector(`#row-${id}`).remove();
+        }
+        async function clear_declarations() {
+            const res = await fetch('/database?confirm=' + confirm("Очистити всі записи?"), {
+                method: 'DELETE',
+            });
+            if (!res.ok) return;
+            document.querySelector("#declarations-table tbody").innerHTML = "";
+        }
+    </script>
+</head>
+<body>
+<main>
+    <h2>Митні декларації</h2>
+    <div class="buttons-container">
+        <a href="/form-new">Подати декларацію</a>
+        <button onclick="location.href = '/database?format=json'">Експортувати у JSON</button>
+        <button onclick="location.href = '/database?format=xml'">Експортувати в XML</button>
+        <button onclick="clear_declarations()">Очистити все</button>
+    </div>
+    <table id="declarations-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>ПІБ</th>
+            <th>Рідна мова</th>
+            <th>Мета візиту</th>
+            <th>Гроші</th>
+            <th>Багаж</th>
+            <th>Дії</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% Object.keys(declarations).forEach(id => { %>
+            <tr id="row-<%= id %>">
+                <td><%= id %></td>
+                <td><%= declarations[id]["last-name"] %> <%= declarations[id]["first-name"] %> <%= declarations[id]["patronym"] %></td>
+                <td><%= declarations[id]["native-language"] %></td>
+                <td><%= declarations[id]["purpose-of-visit"] %></td>
+                <td><%= declarations[id]["money"] %> <%= declarations[id]["currency"] %></td>
+                <td>
+                    <% if (declarations[id]["baggage-list"]) { %>
+                        <ol>
+                            <% declarations[id]["baggage-list"].split('\n').forEach(item => { %>
+                                <li><%= item %></li>
+                            <% }); %>
+                        </ol>
+                    <% } %>
+                </td>
+                <td>
+                    <button onclick="location.href = '/database/<%= id %>?format=json'">JSON</button>
+                    <button onclick="location.href = '/database/<%= id %>?format=xml'">XML</button>
+                    <button onclick="location.href = '/form-edit?id=<%= id %>'">Редагувати</button>
+                    <button onclick="remove_declaration('<%= id %>')">Видалити</button>
+                </td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>
