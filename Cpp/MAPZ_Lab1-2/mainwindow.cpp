@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <cmath>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -116,5 +117,20 @@ void MainWindow::on_clear_btn_clicked()
     ui->chebyshev1->clear();
     ui->chebyshev2->clear();
     ui->chebyshevDist->clear();
+}
+
+
+void MainWindow::on_result_btn_clicked()
+{
+    ui->calculate_btn->click();
+    QMessageBox dlg(this);
+    dlg.setWindowTitle("Результати");
+    dlg.setText(
+        QString("Розміри v1 за\n")
+        .append("мангеттенською: ").append(ui->taxicab1->text()).append("\n")
+        .append("евклідовою: ").append(ui->euclidean1->text()).append("\n")
+        .append("чебишева: ").append(ui->chebyshev1->text())
+    );
+    dlg.exec();
 }
 
