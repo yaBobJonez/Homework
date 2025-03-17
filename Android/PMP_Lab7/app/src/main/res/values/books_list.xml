@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="books">
+        <item>Into the Wild</item>
+        <item>Fire and Ice</item>
+        <item>Forest of Secrets</item>
+        <item>Rising Storm</item>
+        <item>A Dangerous Path</item>
+        <item>The Darkest Hour</item>
+        <item>Midnight</item>
+        <item>Moonrise</item>
+        <item>Dawn</item>
+        <item>Starlight</item>
+        <item>Twilight</item>
+        <item>Sunset</item>
+    </string-array>
+</resources>

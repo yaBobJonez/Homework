@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Додати"
+        app:showAsAction="ifRoom" />
+    <item
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Редагувати"
+        app:showAsAction="ifRoom" />
+    <item
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="Видалити"
+        app:showAsAction="ifRoom" />
+    <item
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="Зберегти"
+        app:showAsAction="ifRoom" />
+    <item
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="Інформація"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/reorderMenu"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="Змінити меню"
+        app:showAsAction="ifRoom" />
+</menu>
