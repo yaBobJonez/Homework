@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="books">
+        <item>Into the Wild;The Prophecies Begin;2003;Kate</item>
+        <item>Fire and Ice;The Prophecies Begin;2003;Kate</item>
+        <item>Forest of Secrets;The Prophecies Begin;2003;Cherith</item>
+        <item>Rising Storm;The Prophecies Begin;2004;Kate</item>
+        <item>A Dangerous Path;The Prophecies Begin;2004;Cherith</item>
+        <item>The Darkest Hour;The Prophecies Begin;2004;Cherith</item>
+        <item>Midnight;The New Prophecy;2005;Cherith</item>
+        <item>Moonrise;The New Prophecy;2005;Cherith</item>
+        <item>Dawn;The New Prophecy;2005;Kate</item>
+        <item>Starlight;The New Prophecy;2006;Cherith</item>
+        <item>Twilight;The New Prophecy;2006;Cherith</item>
+        <item>Sunset;The New Prophecy;2006;Cherith</item>
+        <item>The Sight;Power of Three;2007;Kate</item>
+        <item>Dark River;Power of Three;2007;Kate</item>
+        <item>Outcast;Power of Three;2008;Cherith</item>
+        <item>Eclipse;Power of Three;2008;Kate</item>
+        <item>Long Shadows;Power of Three;2008;Cherith</item>
+        <item>Sunrise;Power of Three;2009;Cherith</item>
+        <item>The Fourth Apprentice;Omen of the Stars;2009;Cherith</item>
+        <item>Fading Echoes;Omen of the Stars;2010;Kate</item>
+        <item>Night Whispers;Omen of the Stars;2010;Kate</item>
+        <item>Sign of the Moon;Omen of the Stars;2011;Cherith</item>
+        <item>The Forgotten Warrior;Omen of the Stars;2011;Cherith</item>
+        <item>The Last Hope;Omen of the Stars;2012;Kate</item>
+    </string-array>
+</resources>
