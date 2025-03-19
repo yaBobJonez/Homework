@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun removeBook(view: View) {
+        if (currentBooks.books.isEmpty()) return
         val index = currentBooks.books.indices.random()
         dbManager.remove(currentBooks.books[index].id)
         currentBooks.removeBook(index)
