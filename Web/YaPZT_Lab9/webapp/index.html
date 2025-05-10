@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8"/>
+    <title> Перевірка усного рахунку.</title>
+    <link rel="stylesheet" href="main.css"/>
+
+    <script language="JavaScript">
+        let max_value;
+        let operand1 = 0, operand2 = 0;
+        let sign = "+";
+        let input = "";
+
+        //16 Визначити перший операнд
+        function f_operand() {
+            if (sign === "*")
+                operand1 = Math.floor(Math.random() * Math.sqrt(max_value) + 1);
+            else
+                operand1 = Math.floor(Math.random() * max_value);
+            return parseInt(operand1);
+        }
+
+        //21 Визначити другий операнд
+        function s_operand() {
+            let multiplier = max_value - operand1;
+            switch (sign) {
+                case "-": multiplier = operand1; break;
+                case "*": multiplier = max_value / operand1; break;
+            }
+            operand2 = Math.floor(Math.random() * multiplier);
+            return parseInt(operand2);
+        }
+
+        //30 Перевірити введені дані
+        function input_sign(x) {
+            if (x === "eval") {
+                let result = NaN;
+                switch (sign) {
+                    case "+": result = operand1 + operand2; break;
+                    case "-": result = operand1 - operand2; break;
+                    case "*": result = operand1 * operand2; break;
+                }
+                if (result === parseInt(input)) {
+                    window.document.forms["test"].r0.value = "Правильно!";
+                } else {
+                    window.document.forms["test"].r0.value = "Спробуй ще!";
+                    window.document.forms["test"].input = "";
+                    input = "";
+                }
+                return true;
+            }
+            input += x;
+            window.document.forms["test"].result.value = input;
+            return true;
+        }
+
+        //60 Генерація варіанта
+        function main_calc() {
+            operand1 = f_operand();
+            window.document.forms["test"]["op1"].value = operand1;
+            operand2 = s_operand();
+            window.document.forms["test"]["op2"].value = operand2;
+            window.document.forms["test"]["s_sign"].value = sign;
+            input = "";
+            window.document.forms['test'].input = "";
+            window.document.forms["test"]["r0"].value = " ???";
+            return true;
+        }
+    </script>
+</head>
+<body>
+<h1 class="center"> Математичний тест </h1>
+<hr/>
+<form name="test">
+    <table class="center">
+        <tr>
+            <td><input id='d1' type=button value="0-10" onClick="max_value=10"></td>
+            <td><input id='d2' type=button value="0-20" onClick="max_value=20"></td>
+            <td><input id='d3' type=button value="0-41" onClick="max_value=41"></td>
+            <td><input id='d4' type=button value="0-100" onClick="max_value=100"></td>
+            <td><input id="plus" type=button value="+" onClick='sign = "+";'></td>
+            <td><input id="minus" type=button value="-" onClick='sign = "-";'></td>
+            <td><input id="asterisk" type=button value="*" onClick='sign = "*";'></td>
+        </tr>
+    </table>
+    <hr>
+    <!--90-->
+    <table class="center">
+        <TR>
+            <td><input id="op1" size="3" maxlength="3"></td>
+            <td><input id="s_sign" size="1" maxlength="1"></td>
+            <td><input id="op2" size="3" maxlength="3"></td>
+            <td>=</td>
+            <td><input id="result" size="4" maxlength="4"
+                       oninput="input = this.value;"></td>
+            <td><input id="award" type=button value="?" onClick="main_calc()">
+            <td><input id="r0" value="???">
+        </TR>
+    </table>
+    <hr/>
+    <!--100-->
+    <table id="keyboard">
+        <tr>
+            <td><input id="b1" type=button value="1" onClick='input_sign("1")'></td>
+            <td><input id="b2" type=button value="2" onClick='input_sign("2")'></td>
+            <td><input id="b3" type=button value="3" onClick='input_sign("3")'></td>
+        </tr>
+        <tr>
+            <td><input id="b4" type=button value="4" onClick='input_sign("4")'></td>
+            <td><input id="b5" type=button value="5" onClick='input_sign("5")'></td>
+            <td><input id="b6" type=button value="6" onClick='input_sign("6")'></td>
+        </tr>
+        <tr>
+            <td><input id="b7" type=button value="7" onClick='input_sign("7")'></td>
+            <td><input id="b8" type=button value="8" onClick='input_sign("8")'></td>
+            <td><input id="b9" type=button value="9" onClick='input_sign("9")'></td>
+        </tr>
+        <tr>
+            <td><input id="b0" type=button value="0" onClick='input_sign("0")'></td>
+            <td colspan="2"><input id="bs" type="button" value="OK" onClick='input_sign("eval")'></td>
+        </tr>
+    </table>
+</form>
+<hr/>
+<script>
+    const dark_colors = ["green", "black", "blue", "gray", "saddlebrown", "purple"];
+    const colors = [...dark_colors, "yellow", "red", "cyan", "orange", "white"];
+    for (const c of "0123456789s".split('')) {
+        let css = document.getElementById("b" + c).style;
+        css.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        css.color = dark_colors.includes(css.backgroundColor)? "white" : "black";
+    }
+</script>
+</body>
+</html>

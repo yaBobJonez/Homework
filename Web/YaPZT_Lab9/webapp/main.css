@@ -1,0 +1,42 @@
+body {
+    background-color: aliceblue;
+}
+.center {
+    text-align: center;
+    margin: auto;
+}
+#keyboard {
+    text-align: center;
+    margin: auto;
+    border: 2px solid;
+}
+
+#b1 {
+    background-color: green;
+    color: white;
+}
+#b2 { background-color: yellow; }
+#b3 {
+    background-color: black;
+    color: white;
+}
+#b4 { background-color: red; }
+#b5 { background-color: cyan; }
+#b6 {
+    background-color: blue;
+    color: white;
+}
+#b7 { background-color: orange; }
+#b8 {
+    background-color: gray;
+    color: white;
+}
+#b9 { background-color: white; }
+#b0 {
+    background-color: purple;
+    color: white;
+}
+#bs {
+    background-color: saddlebrown;
+    color: white;
+}
