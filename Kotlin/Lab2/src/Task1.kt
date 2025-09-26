@@ -6,8 +6,8 @@ fun transform1(text: String, d1: Char, d2: Char): String {
 }
 
 fun transform2(text: String, d1: Char, d2: Char): String {
-    val regex = "(?<=$d1).*?(?=($d2)".toRegex()
-    require(regex.matches(text))
+    val regex = "(?<=${d1}).*?(?=${d2})".toRegex()
+    require(regex.containsMatchIn(text))
     return text.replace(regex, "")
 }
 
