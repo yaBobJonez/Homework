@@ -1,16 +1,35 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Desktop (JVM).
+# SimpleEvacManSys 2
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
+Творчий проєкт з «Програмування на Kotlin» — мережева симуляція системи оповіщення про пожежі та управління евакуацією
+людей (СОУЕ). Проєкт розроблений на фреймворці Compose Multiplatform з використанням технології WebSockets для повно
+дуплексного обміну повідомленнями між пристроями у реальному часі. Складається з десктопної (JVM) частини – панелі
+керування та мобільних (Android, iOS) застосунків – оповіщувачів (пожежних кнопок з вбудованими індикаторами). Завдяки
+клієнт-серверній архітектурі, MVVC, власним Composable віджетам та управлінню станами, СОУЕ наближена до реальних
+систем за надійністю та функціоналом. Через обмеження часу SEMS2 не локалізована, проте підтримує багато функції:
 
-* [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+- активація та деактивація системи
+- блокування підключень за IP-адресами
+- відʼєднання клієнтів за рукостисканням
+- «Підтвердження» (Acknowledge) та «Заглушення» (Silence) тривоги
+- ручне ввімкнення з панелі
+- безпечне скидання (вимагає, що всі пожежні кнопки були вимкнені, щоб відключити тривогу)
+- звукові та світлові сигнали
+
+### Структура файлів
+
+Для реалізації сервера та клієнта WebSockets використовується відома бібліотека Ktor та широко застосовуються корутини.
+У директорії, специфічній для [Android](./composeApp/src/androidMain/kotlin/com/yabobjonez/sems2), знаходиться
+реалізація аудіоплеєра з використанням MediaPlayer. Для [iOS](./composeApp/src/iosMain/kotlin/com/yabobjonez/sems2)
+такий програвач реалізується через AVFoundation (не тестувався через відсутність пристроїв від Apple).
+
+[commonMain](./composeApp/src/commonMain) містить як аудіоресурси (wav файли), так і спільний для всіх платформ код
+(здебільшого для Android та iOS) — інтерфейс, expected клас аудіопрогравача, кнопку з тривалим натисканням (майже
+копіює стандартну реалізацію кнопки) та клієнт. [jvmMain](./composeApp/src/jvmMain/kotlin/com/yabobjonez/sems2) включає
+інтерфейс десктопного застосунку, реалізацію аудіоплеєра на платформі Java, список клієнтів (візуальний компонент),
+цифрову клавіатуру, клас керування станом програми та сервер.
+
+Для збірки та запуску рекомендовано використовувати IntellĲ IDEA або Android Studio (еквівалентні за функціоналом),
+проте нижче залишені інструкції для ручної збірки з системою Gradle (англійською мовою).
 
 ### Build and Run Android Application
 
@@ -42,7 +61,3 @@ in your IDE’s toolbar or run it directly from the terminal:
 
 To build and run the development version of the iOS app, use the run configuration from the run widget
 in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and run it from there.
-
----
-
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
