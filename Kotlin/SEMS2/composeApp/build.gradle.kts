@@ -32,7 +32,6 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-            implementation("androidx.media3:media3-exoplayer:1.8.0")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -45,7 +44,6 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation("io.ktor:ktor-client-cio:3.3.0")
             implementation("io.ktor:ktor-client-websockets:3.3.0")
-            implementation("network.chaintech:compose-multiplatform-media-player:1.0.46")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

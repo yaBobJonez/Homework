@@ -1,30 +1,54 @@
 package com.yabobjonez.sems2
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import sems2.composeapp.generated.resources.Res
-import java.io.File
+import java.io.BufferedInputStream
+import java.io.ByteArrayInputStream
+import javax.sound.sampled.AudioInputStream
 import javax.sound.sampled.AudioSystem
 import javax.sound.sampled.Clip
 
 actual class AudioPlayer {
-    private var clip: Clip? = null
+    private val clips = mutableMapOf<String, Clip>()
+    init {
+        CoroutineScope(Dispatchers.Default).launch {
+            for (name in arrayOf("fire", "clear")) {
+                val bytes = Res.readBytes("files/$name.wav")
+                val stream = BufferedInputStream(ByteArrayInputStream(bytes))
+                val clip = AudioSystem.getClip()
+                clip.open(AudioSystem.getAudioInputStream(stream))
+                clips[name] = clip
+            }
+        }
+    }
 
     actual fun playAlarm() {
         stop()
-        val uri = Res.getUri("files/alarm.wav")
-        val audioInputStream = AudioSystem.getAudioInputStream(File(uri))
-        clip = AudioSystem.getClip()
-        clip?.open(audioInputStream)
-        clip?.loop(Clip.LOOP_CONTINUOUSLY)
-        clip?.start()
+        val clip = clips["fire"]!!
+        clip.loop(Clip.LOOP_CONTINUOUSLY)
+        clip.start()
+    }
+
+    actual fun playAllClear() {
+        stop()
+        val clip = clips["clear"]!!
+        clip.start()
     }
 
     actual fun stop() {
-        clip?.stop()
+        for (clip in clips.values) {
+            if (clip.isRunning) clip.stop()
+            clip.microsecondPosition = 0L
+        }
     }
 
     actual fun release() {
-        stop()
-        clip?.close()
-        clip = null
+        for (clip in clips.values) {
+            if (clip.isRunning) clip.stop()
+            clip.close()
+        }
+        clips.clear()
     }
 }

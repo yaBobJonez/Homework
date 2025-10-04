@@ -1,28 +1,12 @@
 package com.yabobjonez.sems2
 
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
-import io.ktor.client.plugins.websocket.ClientWebSocketSession
-import io.ktor.client.plugins.websocket.DefaultClientWebSocketSession
-import io.ktor.client.plugins.websocket.WebSockets
-import io.ktor.client.plugins.websocket.webSocket
-import io.ktor.client.plugins.websocket.webSocketSession
-import io.ktor.websocket.CloseReason
-import io.ktor.websocket.Frame
-import io.ktor.websocket.WebSocketSession
-import io.ktor.websocket.close
-import io.ktor.websocket.readText
+import io.ktor.client.*
+import io.ktor.client.engine.cio.*
+import io.ktor.client.plugins.websocket.*
+import io.ktor.websocket.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.cancelAndJoin
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch
 
@@ -31,6 +15,7 @@ class WSClient(
     var isActive: MutableState<Boolean>,
     var isButtonDown: MutableState<Boolean>
 ) {
+    private val player = AudioPlayer()
     private val client = HttpClient(CIO) {
         install(WebSockets)
     }
@@ -50,8 +35,15 @@ class WSClient(
                 session!!.incoming.consumeEach { frame ->
                     if (frame is Frame.Text) {
                         when (frame.readText()) {
-                            "FIRE" -> isActive.value = true
-                            "clear" -> isActive.value = false
+                            "FIRE" -> {
+                                isActive.value = true
+                                player.playAlarm()
+                            }
+                            "mute" -> player.stop()
+                            "clear" -> {
+                                isActive.value = false
+                                player.playAllClear()
+                            }
                             "button_status?" -> {
                                 val statusMessage = if (isButtonDown.value) "down" else "up"
                                 session!!.send(Frame.Text("button_status = $statusMessage"))
@@ -63,6 +55,7 @@ class WSClient(
                 println("Error: ${e.message}")
             } finally {
                 isConnected.value = false
+                isButtonDown.value = false
                 session = null
             }
         }
@@ -79,7 +72,7 @@ class WSClient(
 
     fun disconnect() {
         scope.launch {
-            session?.close(CloseReason(CloseReason.Codes.NORMAL, "Client disconnected"))
+            session?.close(CloseReason(CloseReason.Codes.NORMAL, "Disconnect request"))
         }
     }
 }

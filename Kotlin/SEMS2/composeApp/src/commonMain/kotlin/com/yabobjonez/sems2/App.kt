@@ -32,6 +32,7 @@ fun App() {
     val isConnected = remember { mutableStateOf(false) }
     val isActive = remember { mutableStateOf(false) }
     val isButtonDown = remember { mutableStateOf(false) }
+
     val client = remember { WSClient(isConnected, isActive, isButtonDown) }
     var serverIp by remember { mutableStateOf("") }
 
@@ -87,7 +88,7 @@ fun App() {
                 ),
             contentAlignment = Alignment.Center
         ) {
-            Text(
+            Text (
                 text = if (isButtonDown.value) "Reset" else ">> HOLD <<",
                 color = if (isButtonDown.value) Color.LightGray else Color.Black,
                 fontSize = 50.sp

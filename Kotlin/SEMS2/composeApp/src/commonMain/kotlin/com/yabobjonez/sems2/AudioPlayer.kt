@@ -1,7 +1,10 @@
 package com.yabobjonez.sems2
 
-expect class AudioPlayer {
+import sems2.composeapp.generated.resources.Res
+
+expect class AudioPlayer() {
     fun playAlarm()
+    fun playAllClear()
     fun stop()
     fun release()
 }

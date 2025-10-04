@@ -8,6 +8,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
@@ -29,7 +30,7 @@ fun HoldButton(
     content: @Composable RowScope.() -> Unit
 ) {
     val interactionSource = interactionSource ?: remember { MutableInteractionSource() }
-    val containerColor = colors.containerColor
+    val containerColor = colors.containerColor.tuned(0.75f)
     val contentColor = colors.contentColor
     Surface (
         shape = shape,
@@ -66,4 +67,12 @@ fun HoldButton(
             )
         }
     }
+}
+
+fun Color.tuned(factor: Float = 1f): Color {
+    return copy(
+        red = (red * factor).coerceIn(0f, 1f),
+        green = (green * factor).coerceIn(0f, 1f),
+        blue = (blue * factor).coerceIn(0f, 1f)
+    )
 }

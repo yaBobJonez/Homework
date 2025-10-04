@@ -1,9 +1,9 @@
 package com.yabobjonez.sems2
 
-import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.runtime.mutableStateListOf
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
-import io.ktor.server.http.content.staticResources
+import io.ktor.server.http.content.*
 import io.ktor.server.netty.*
 import io.ktor.server.plugins.*
 import io.ktor.server.routing.*
@@ -20,18 +20,18 @@ data class Client(
     val ip: String
 )
 
-class WSServer(
-    private var model: SnapshotStateList<Client>,
-) {
+class WSServer(private val sm: StateManager) {
+    val model = mutableStateListOf<Client>()
     val blockedIps = mutableSetOf<String>()
+    val buttonStatusReplies = mutableListOf<Boolean>()
+    private lateinit var instance: EmbeddedServer<NettyApplicationEngine, NettyApplicationEngine.Configuration>
     private val scope = CoroutineScope(Dispatchers.IO)
 
     fun start() {
-        embeddedServer(Netty, port = 8080) {
+        instance = embeddedServer(Netty, port = 8080) {
             install(WebSockets)
 
             routing {
-                staticResources("/alarmData", "files")
                 webSocket("/alarm") {
                     val ip = this.call.request.origin.remoteAddress
                     if (ip in blockedIps) {
@@ -49,8 +49,11 @@ class WSServer(
                             if (frame is Frame.Text) {
                                 when (frame.readText()) {
                                     "FIRE" -> {
-                                        broadcast("FIRE")
+                                        sm.alarmCause = "triggered by $ip"
+                                        sm.transition(State.FIRE)
                                     }
+                                    "button_status = down" -> buttonStatusReplies.add(true)
+                                    "button_status = up" -> buttonStatusReplies.add(false)
                                 }
                             }
                         }
@@ -61,10 +64,15 @@ class WSServer(
                     }
                 }
             }
-        }.start(wait = false)
+        }
+        instance.start(wait = false)
     }
 
-    private suspend fun broadcast(message: String) {
+    fun stop() {
+        instance.stop(1000, 5000)
+    }
+
+    suspend fun broadcast(message: String) {
         model.forEach { client ->
             try {
                 client.session.send(Frame.Text(message))
@@ -74,40 +82,9 @@ class WSServer(
         }
     }
 
-    fun trigger() {
-        scope.launch {
-            broadcast("FIRE")
-        }
-    }
-
-    fun reset() {
-        scope.launch {
-            for (client in model) {
-                try {
-                    client.session.send(Frame.Text("button_status?"))
-                    val frame = withTimeoutOrNull(2000) {
-                        client.session.incoming.receive()
-                    }
-                    if (frame is Frame.Text) {
-                        when (frame.readText()) {
-                            "FIRE" -> {
-                                trigger()
-                                return@launch
-                            }
-                            "button_status = down" -> return@launch
-                        }
-                    }
-                } catch (e: Exception) {
-                    println("Error checking client status: ${e.message}")
-                }
-            }
-            broadcast("clear")
-        }
-    }
-
     fun disconnect(
         index: String,
-        reason: CloseReason = CloseReason(CloseReason.Codes.NORMAL, "Client disconnected")
+        reason: CloseReason = CloseReason(CloseReason.Codes.NORMAL, "Disconnect confirm")
     ) {
         scope.launch {
             val num = index.toIntOrNull() ?: return@launch
