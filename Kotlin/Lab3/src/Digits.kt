@@ -1,4 +1,4 @@
-class Digits(override var string: String) : Strings(string) {
+class Digits(string: String) : Strings(string) {
     init {
         require(string.matches(Regex("[0-9]+"))) { "Digits має містити цифри" }
     }

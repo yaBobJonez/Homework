@@ -1,6 +1,6 @@
 import kotlin.math.abs
 
-open class Strings(protected open var string: String) {
+open class Strings(protected var string: String) {
     val length: Int
         get() = string.length
     val data: String

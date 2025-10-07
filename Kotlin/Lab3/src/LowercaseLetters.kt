@@ -1,4 +1,4 @@
-class LowercaseLetters(override var string: String) : Strings(string) {
+class LowercaseLetters(string: String) : Strings(string) {
     init {
         require(string.matches(Regex("\\p{Ll}+")))
             { "LowercaseLetters має містити малі літери" }
