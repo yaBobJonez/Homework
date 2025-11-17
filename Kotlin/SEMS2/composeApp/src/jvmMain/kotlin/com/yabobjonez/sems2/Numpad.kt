@@ -22,7 +22,7 @@ fun Numpad(
     fun onButtonClick(value: String) {
         when (value) {
             "<" -> currentInput = currentInput.dropLast(1);
-            "⊘" -> {
+            "×" -> {
                 currentInput = ""
                 onCancel()
             }
@@ -44,7 +44,7 @@ fun Numpad(
             listOf("4", "5", "6"),
             listOf("7", "8", "9"),
             listOf("<", "0", "."),
-            listOf("⊘", "↵"),
+            listOf("×", "↵"),
         )
         numpadButtons.forEach { row ->
             Row (
